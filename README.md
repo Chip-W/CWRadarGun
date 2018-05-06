@@ -2,6 +2,12 @@
 This script uses the [BrockALPR](https://forum.fivem.net/t/release-police-alpr/61227) as a base.  Edited and released with permission
 from [Brock70](https://forum.fivem.net/u/brock70/).
 
+# MPH / KPH
+Thanks you JebstaLP from the FiveM forums for this contribution.<br>
+Set line 23:
+- true = KPH (metric)
+- false = MPH (imperial)
+
 # Intended Purpose
 To provide a radar gun that works outside of a vehicle.
 

@@ -3,10 +3,12 @@
 	Radar/ALPR 
 	Created by Brock =]
 	Edited by Chip W. Gaming
+	Edits allowing to switch between mph/kph by JebstaLP
+
 	Uses Y to turn on
     Uses E to freeze
 	
-	To change either key, edit lines 44 and 57
+	To change either key, edit lines 46 and 59
 
 ------------------------------------------------------------------------]]--
 
@@ -18,6 +20,7 @@ local radar =
 	info2 = "~y~Initializing Radar Gun...~w~321...~y~Loaded! ",
 	minSpeed = 5.0,
 	maxSpeed = 75.0,
+	metric	= true, --set to false for imperal (mph) Edited by JebstaLP
 }
 --local distanceToCheckFront = 50
 
@@ -41,7 +44,7 @@ Citizen.CreateThread( function()
 	while true do
 		Wait(0)
 
-		if IsControlJustPressed(1, 246) then --246 = Y
+		if IsControlJustPressed(1, 20) then --246 = Y
 			
 			if radar.shown then 
 				radar.shown = false 
@@ -70,9 +73,16 @@ Citizen.CreateThread( function()
 					if IsEntityAVehicle(e) then
 						
 						local fmodel = GetDisplayNameFromVehicleModel(GetEntityModel(e))
-						local fvspeed = GetEntitySpeed(e)*2.236936
-						local fplate = GetVehicleNumberPlateText(e)
-						radar.info = string.format("~y~Plate: ~w~%s  ~y~Model: ~w~%s  ~y~Speed: ~w~%s mph", fplate, fmodel, math.ceil(fvspeed))
+						
+						if metric == true then  --checks if metric or imperal (line 75 - 83) by JebstaLP
+							local fvspeed = GetEntitySpeed(e)*3.6  -- m/s to kmh
+							local fplate = GetVehicleNumberPlateText(e)
+							radar.info = string.format("~y~Plate: ~w~%s  ~y~Model: ~w~%s  ~y~Speed: ~w~%s km/h", fplate, fmodel, math.ceil(fvspeed))
+						else 
+							local fvspeed = GetEntitySpeed(e)*2.23694 -- m/s to mph
+							local fplate = GetVehicleNumberPlateText(e)
+							radar.info = string.format("~y~Plate: ~w~%s  ~y~Model: ~w~%s  ~y~Speed: ~w~%s mph", fplate, fmodel, math.ceil(fvspeed))
+						end
 					end
 					
 			end
