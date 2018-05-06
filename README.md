@@ -3,7 +3,7 @@ This script uses the [BrockALPR](https://forum.fivem.net/t/release-police-alpr/6
 from [Brock70](https://forum.fivem.net/u/brock70/).
 
 # MPH / KPH
-Thanks you JebstaLP from the FiveM forums for this contribution.<br>
+Thanks to JebstaLP from the FiveM forums for this contribution.<br>
 Set line 23:
 - true = KPH (metric)
 - false = MPH (imperial)
